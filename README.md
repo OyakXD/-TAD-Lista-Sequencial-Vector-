@@ -1,6 +1,6 @@
 # [TAD] Lista Sequencial Vector
 
-O TAD Lista Sequencial tem os seguintes <strong>atributos</strong>:
+O TAD Lista Sequencial tem os seguintes <strong>atributos</strong>:<br>
 ◦ a lista de elementos (implementada como um vetor).<br>
 ◦ a quantidade de elementos atualmente na lista.<br>
 ◦ a capacidade total da lista (essa capacidade pode aumentar)<br>
