@@ -23,7 +23,7 @@ class Vector
     this->ptr = new int[this->capacity];
   }
 
-  void push_back(int value)
+  void Vector::push_back(const int& value)
   {
     // Insere um valor inteiro na lista somente se houver espaço
     if(this->size < this->capacity){
@@ -33,19 +33,19 @@ class Vector
   }
 
   // Retorna a capacidade total da lista
-  int Vector::getCapacity()
+  int getCapacity() const 
   {
     return this->capacity;
   }
 
   // Retorna o tamanho atual da lista
-  int Vector::getSize()
+  int getSize() const
   {
     return this->size;
   }
 
   // Retorna true se e somente se a lista estiver vazia
-  bool empty()
+  bool empty() const 
   {
     if(this->size == 0){
       return true;
@@ -59,7 +59,7 @@ class Vector
    ''std::out_of_range'' caso contrário
   
   */ 
-  int &at(int n)
+  int& at(int n) const 
   {
     if(n < 0 || n >= this->size){
       throw std::out_of_range("Index out of range");
@@ -92,6 +92,22 @@ class Vector
       delete[] this->ptr;
       this->ptr = new_ptr;
       this->capacity = n;
+    }
+  }
+
+  // Função para decrementar o tamanho da lista, utilizada na função removeAt
+  void decrementSize()
+  {
+    if(size > 0){
+      --size;
+    }
+  }
+
+  // Função para incrementar o tamanho da lista, utilizada na função insert
+  void incrementSize()
+  {
+    if(size < capacity){
+      ++size;
     }
   }
 
