@@ -3,21 +3,16 @@
 #include <vector.cpp>
 using namespace std;
 
-
-void print(const Vector& list){
-  for(int i = 0; i < list.getSize(); i++){
-    cout << list.at(i) << " ";
-    cout << endl;
-  }
-}
-
 int main (){
-  Vector list1, list2;
-  for(int i = 0; i < 150; ++i){
-    list1.push_back(i);
-    list1.push_back(i * 2);
+  Vector lista;
+
+  // Adicionando numeros de 1 a 50
+  for(int i = 1; i <= 50; i++){
+    lista.push_back(i);
   }
 
-  print(list1);
-  print(list2);
+  // Imprimindo elementos da lista
+  for(int i = 0; i < lista.getSize(); i++){
+    cout << lista[i] << " ";
+  }
 }
