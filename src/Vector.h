@@ -16,21 +16,7 @@ class Vector
     Construtor default: cria uma lista vazia 
     com capacidade inicial para 5 inteiros
   */
-  Vector()
-  {
-    this->capacity = 5;
-    this->size = 0;
-    this->ptr = new int[this->capacity];
-  }
-
-  void Vector::push_back(const int& value)
-  {
-    // Insere um valor inteiro na lista somente se houver espaço
-    if(this->size < this->capacity){
-      this->ptr[this->size] = value;
-      this->size++;
-    }
-  }
+  Vector();
 
   // Retorna a capacidade total da lista
   int getCapacity() const 
@@ -59,19 +45,10 @@ class Vector
    ''std::out_of_range'' caso contrário
   
   */ 
-  int& at(int n) const 
-  {
-    if(n < 0 || n >= this->size){
-      throw std::out_of_range("Index out of range");
-    }
-    return this->ptr[n];
-  }
+  int& Vector::at(int n) const;
 
   // Retorna uma referência para o primeiro elemento da lista
-  int& operator[](int n)
-  {
-    return this->ptr[n];
-  }
+  int& operator[](int n);
   /*
   
     Verifica se a lista está cheia, se sim, aloca mais espaço
@@ -80,61 +57,33 @@ class Vector
     e a capacidade do vetor não é afetada
   
   */
-  void reserve(int n)
-  {
-    if(n > this->capacity)
-    {
-      int *new_ptr = new int[n];
-      for(int i = 0; i < this->size; i++)
-      {
-        new_ptr[i] = this->ptr[i];
-      }
-      delete[] this->ptr;
-      this->ptr = new_ptr;
-      this->capacity = n;
-    }
-  }
+  void Vector::reserve(int n);
 
   // Função para decrementar o tamanho da lista, utilizada na função removeAt
-  void decrementSize()
-  {
-    if(size > 0){
-      --size;
-    }
-  }
+  void Vector::decrementSize();
 
   // Função para incrementar o tamanho da lista, utilizada na função insert
-  void incrementSize()
-  {
-    if(size < capacity){
-      ++size;
-    }
-  }
+  void Vector::incrementSize();
 
   /*
   Recebe um inteiro como argumento e o adiciona 
   logo após o ultimo elemento da lista.
   */
-  void push_back(int& value)
-  {
-    if(this->size < this->capacity)
-    {
-      this->ptr[this->size] = value;
-      this->size++;
-    }
-  }
+  void push_back(int& value);
 
   /*
   Remove o ultimo elemento da lista se a lista não estiver
   vazia. Caso contrário, faz nada
   */
-  void pop_back()
-  {
-    if(this->size > 0)
-    {
-      this->size--;
-    }
-  }
+  void pop_back();
+
+  void replaceAt(int value, int k);
+  
+  void removeAt(int k);
+
+  bool insert(int value, int k);
+
+  void removeAll(int value);
 
 
   // Destructor libera a mémoria que foi alocada dinamicamente
